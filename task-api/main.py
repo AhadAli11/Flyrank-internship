@@ -262,6 +262,8 @@ def protected_dashboard(user_and_token: tuple = Depends(get_current_user), _: st
     user, token = user_and_token
     return {"message": f"Welcome to your dashboard, {user.email}"}
 
+from src.llm.enrich import enrich_book
+
 @app.post("/enrich", response_model=EnrichmentResult)
 def enrich(request: EnrichRequest):
     if os.environ.get("LLM_STUB") == "1":
@@ -272,6 +274,7 @@ def enrich(request: EnrichRequest):
             confidence=0.42
         )
 
-    # Stage 2 will fill this in with the real model call
-    raise HTTPException(status_code=501, detail="Model call not yet implemented")
-
+    try:
+        return enrich_book(request.title, request.description, request.price_gbp)
+    except RuntimeError as e:
+        raise HTTPException(status_code=502, detail=str(e))
