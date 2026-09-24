@@ -10,6 +10,10 @@ from psycopg.rows import dict_row
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
+from src.llm.schema import EnrichmentResult, Category
+from src.llm.models import EnrichRequest
+import random
+
 
 class TaskCreate(BaseModel):
     title: Optional[str] = None
@@ -257,3 +261,17 @@ def logout(user_and_token: tuple = Depends(get_current_user), _: str = Depends(s
 def protected_dashboard(user_and_token: tuple = Depends(get_current_user), _: str = Depends(security_scheme)):
     user, token = user_and_token
     return {"message": f"Welcome to your dashboard, {user.email}"}
+
+@app.post("/enrich", response_model=EnrichmentResult)
+def enrich(request: EnrichRequest):
+    if os.environ.get("LLM_STUB") == "1":
+        return EnrichmentResult(
+            category=Category.OTHER,
+            summary="Stub response — no model was called.",
+            quality_flags=[],
+            confidence=0.42
+        )
+
+    # Stage 2 will fill this in with the real model call
+    raise HTTPException(status_code=501, detail="Model call not yet implemented")
+
