@@ -1,0 +1,95 @@
+[
+  {
+    "name": "clear_fiction",
+    "output": {
+      "category": "fiction",
+      "summary": "A novel about wealth, love, and the American Dream in the 1920s.",
+      "quality_flags": [],
+      "confidence": 1.0
+    },
+    "note": ""
+  },
+  {
+    "name": "clear_poetry",
+    "output": {
+      "category": "poetry",
+      "summary": "A whimsical collection of poems and drawings written for children.",
+      "quality_flags": [],
+      "confidence": 0.98
+    },
+    "note": "  \u26a0 expected category 'childrens', got 'poetry'"
+  },
+  {
+    "name": "missing_description",
+    "output": {
+      "category": "non-fiction",
+      "summary": "A generic business book with no description provided.",
+      "quality_flags": [
+        "missing_description",
+        "generic_title"
+      ],
+      "confidence": 0.75
+    },
+    "note": ""
+  },
+  {
+    "name": "duplicated_description",
+    "output": {
+      "category": "other",
+      "summary": "A Light in the Attic is a book whose description repeats the same sentence twice, emphasizing its importance.",
+      "quality_flags": [
+        "description_duplicated"
+      ],
+      "confidence": 0.3
+    },
+    "note": ""
+  },
+  {
+    "name": "generic_title",
+    "output": {
+      "category": "other",
+      "summary": "A minimal record with generic title \"Book\" and a placeholder description.",
+      "quality_flags": [
+        "generic_title"
+      ],
+      "confidence": 0.4
+    },
+    "note": ""
+  },
+  {
+    "name": "price_outlier_high",
+    "output": {
+      "category": "fiction",
+      "summary": "A short, light-hearted paperback novel with a generic title and an unusually high price.",
+      "quality_flags": [
+        "price_outlier",
+        "generic_title"
+      ],
+      "confidence": 0.7
+    },
+    "note": ""
+  },
+  {
+    "name": "ambiguous_genre",
+    "output": {
+      "category": "non-fiction",
+      "summary": "A sweeping account blending fact and speculative narrative, covering broad historical themes.",
+      "quality_flags": [],
+      "confidence": 0.75
+    },
+    "note": "  \u26a0 expected low confidence, got 0.75"
+  },
+  {
+    "name": "empty_title_edge_case",
+    "output": {
+      "category": "other",
+      "summary": "No real description here.",
+      "quality_flags": [
+        "missing_description",
+        "generic_title"
+      ],
+      "confidence": 0.3
+    },
+    "note": ""
+  }
+]

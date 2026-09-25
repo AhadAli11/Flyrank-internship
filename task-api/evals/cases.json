@@ -1,0 +1,74 @@
+[
+    {
+        "name": "clear_fiction",
+        "input": {
+            "title": "The Great Gatsby",
+            "description": "A novel about wealth, love, and the American Dream in the 1920s.",
+            "price_gbp": 12.99
+        },
+        "expected_category": "fiction"
+    },
+    {
+        "name": "clear_poetry",
+        "input": {
+            "title": "A Light in the Attic",
+            "description": "A collection of poetry and drawings for children.",
+            "price_gbp": 51.77
+        },
+        "expected_category": "childrens"
+    },
+    {
+        "name": "missing_description",
+        "input": {
+            "title": "Untitled Business Book",
+            "description": null,
+            "price_gbp": 15.00
+        },
+        "expected_flag": "missing_description"
+    },
+    {
+        "name": "duplicated_description",
+        "input": {
+            "title": "A Light in the Attic",
+            "description": "It's hard to imagine a world without this book. It's hard to imagine a world without this book.",
+            "price_gbp": 51.77
+        },
+        "expected_flag": "description_duplicated"
+    },
+    {
+        "name": "generic_title",
+        "input": {
+            "title": "Book",
+            "description": "test",
+            "price_gbp": 9.99
+        },
+        "expected_flag": "generic_title"
+    },
+    {
+        "name": "price_outlier_high",
+        "input": {
+            "title": "Small Paperback Novel",
+            "description": "A short light read.",
+            "price_gbp": 999.99
+        },
+        "expected_flag": "price_outlier"
+    },
+    {
+        "name": "ambiguous_genre",
+        "input": {
+            "title": "The History of Everything",
+            "description": "A sweeping account blending fact and speculative narrative.",
+            "price_gbp": 22.50
+        },
+        "expected_low_confidence": true
+    },
+    {
+        "name": "empty_title_edge_case",
+        "input": {
+            "title": "?",
+            "description": "No real description here.",
+            "price_gbp": 5.00
+        },
+        "expected_flag": "generic_title"
+    }
+]

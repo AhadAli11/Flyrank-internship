@@ -4,6 +4,16 @@ import time
 from openai import OpenAI
 from src.llm.schema import EnrichmentResult
 
+import os
+import json
+import time
+from dotenv import load_dotenv
+from openai import OpenAI
+from src.llm.schema import EnrichmentResult
+
+load_dotenv()
+
+
 client = OpenAI(
     base_url=os.environ["LLM_BASE_URL"],
     api_key=os.environ["LLM_API_KEY"],
